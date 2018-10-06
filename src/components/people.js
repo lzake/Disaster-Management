@@ -1,6 +1,8 @@
 import React from 'react';
 
-const People = ({ tiles }) => {
+const People = ({
+  tiles
+}) => {
 
 
   const checkPeople = (tiles) => {
@@ -29,11 +31,16 @@ const People = ({ tiles }) => {
     return sum
   }
 
-  return (
-    <div className="peopleShelter">
-      <div className="peopleCounter">People: {checkPeople(tiles)}</div>
-      <div className="shelterCapacity">Shelter Capacity: {checkShelter(tiles)}</div>
-    </div>
+  return ( <
+    div className = "peopleShelter" >
+    <
+    div className = "peopleCounter" > People: {
+      checkPeople(tiles)
+    } < /div> <
+    div className = "shelterCapacity" > Shelter Capacity: {
+      checkShelter(tiles)
+    } < /div> <
+    /div>
   )
 }
 

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+
 import { tiles } from "./components/data";
-//components
-import Navbar from "./components/Navbar";
+import NavBar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Response from "./components/Response";
 import Map from "./components/Map";
@@ -34,7 +34,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Navbar />
+          <NavBar />
           <Switch>
             <Route exact path="/" component={Hero} />
             <Route path="/map" component={Map} />

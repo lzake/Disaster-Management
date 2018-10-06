@@ -2,26 +2,30 @@ import React from 'react';
 import ControlBar from './controlBar'
 import Timer from './timer'
 
-const Response = ({ tiles, update, controlbar, updateControlBar, showPopUp, togglePopUp, type, updateType }) => {
+const Response = ({
+  tiles,
+  update,
+  controlbar,
+  updateControlBar,
+  showPopUp,
+  togglePopUp,
+  type,
+  updateType
+}) => {
 
   const titleClasses = (data) => {
     const clss = ['tileTitle']
     if (data.title === 'Flood') {
       clss.push('Flood')
-    }
-    else if (data.title === 'Down Tree') {
+    } else if (data.title === 'Down Tree') {
       clss.push('Tree')
-    }
-    else if (data.title === 'Live Electrical') {
+    } else if (data.title === 'Live Electrical') {
       clss.push('Electrical')
-    }
-    else if (data.title === 'Shelter') {
+    } else if (data.title === 'Shelter') {
       clss.push('Shelter')
-    }
-    else if (data.title === 'Drop Off/Pick Up') {
+    } else if (data.title === 'Drop Off/Pick Up') {
       clss.push('PickUp')
-    }
-    else if (data.title === 'Person' || data.title === 'People') {
+    } else if (data.title === 'Person' || data.title === 'People') {
       clss.push('Person')
     }
     if (data.selected) {
@@ -70,7 +74,9 @@ const Response = ({ tiles, update, controlbar, updateControlBar, showPopUp, togg
   const checked = data => {
     if (data.selected) {
       return true
-    } else { return false }
+    } else {
+      return false
+    }
   }
 
   const timer = data => {
@@ -118,56 +124,114 @@ const Response = ({ tiles, update, controlbar, updateControlBar, showPopUp, togg
     update(tiles)
   }
 
-  return (
-    <div>
-      <ControlBar
-        updateControlBar={updateControlBar}
-        controlbar={controlbar}
-        tiles={tiles}
-        update={update}
-        showPopUp={showPopUp}
-        togglePopUp={togglePopUp}
-        type={type}
-        updateType={updateType}
-      />
-      <div className="responseWrapper">
-        {tiles.map((data, index) => (
-          <div key={index}>
-            <div className={display(data)}>
-              <div className={titleClasses(data)}>{data.title}</div>
-              <div className="tileLocation">{data.location}</div>
-              <div className="tileDescription">{data.description}</div>
-              <div className={data.person ? "show dateSafe" : "hide"}>
-                <Timer time={data} />
-                <div className={safetyCheck(data)}>
-                  <div className="safeTitle">Safe</div>
-                  <div className="safeInput"><input type="checkbox" onClick={selectClick.bind(this, data)} checked={checked(data)} /></div>
-                </div>
-              </div>
-
-              <div className={data.shelter ? "shelterFooter" : "hide"}>
-                <div className="capacity">Capacity: {data.capacity}</div>
-                <div className="availability">Avail: {data.capacity - data.inUse}</div>
-                <div
-                  className="plus"
-                  onClick={availability.bind(this, data)}
-                >
-                  +
-              </div>
-                <div
-                  className="minus"
-                  onClick={noRoom.bind(this, data)}
-                >
-                  -
-              </div>
-              </div>
-
-            </div>
-          </div>
-        ))
+  return ( <
+    div >
+    <
+    ControlBar updateControlBar = {
+      updateControlBar
+    }
+    controlbar = {
+      controlbar
+    }
+    tiles = {
+      tiles
+    }
+    update = {
+      update
+    }
+    showPopUp = {
+      showPopUp
+    }
+    togglePopUp = {
+      togglePopUp
+    }
+    type = {
+      type
+    }
+    updateType = {
+      updateType
+    }
+    /> <
+    div className = "responseWrapper" > {
+      tiles.map((data, index) => ( <
+        div key = {
+          index
+        } >
+        <
+        div className = {
+          display(data)
+        } >
+        <
+        div className = {
+          titleClasses(data)
+        } > {
+          data.title
+        } < /div> <
+        div className = "tileLocation" > {
+          data.location
+        } < /div> <
+        div className = "tileDescription" > {
+          data.description
+        } < /div> <
+        div className = {
+          data.person ? "show dateSafe" : "hide"
+        } >
+        <
+        Timer time = {
+          data
         }
-      </div>
-    </div>
+        /> <
+        div className = {
+          safetyCheck(data)
+        } >
+        <
+        div className = "safeTitle" > Safe < /div> <
+        div className = "safeInput" > < input type = "checkbox"
+        onClick = {
+          selectClick.bind(this, data)
+        }
+        checked = {
+          checked(data)
+        }
+        /></div >
+        <
+        /div> <
+        /div>
+
+        <
+        div className = {
+          data.shelter ? "shelterFooter" : "hide"
+        } >
+        <
+        div className = "capacity" > Capacity: {
+          data.capacity
+        } < /div> <
+        div className = "availability" > Avail: {
+          data.capacity - data.inUse
+        } < /div> <
+        div className = "plus"
+        onClick = {
+          availability.bind(this, data)
+        } >
+        +
+        <
+        /div> <
+        div className = "minus"
+        onClick = {
+          noRoom.bind(this, data)
+        } >
+        -
+        <
+        /div> <
+        /div>
+
+        <
+        /div> <
+        /div>
+      ))
+    } <
+    /div> <
+    /div>
   );
 }
 
